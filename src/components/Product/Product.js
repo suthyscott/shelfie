@@ -5,7 +5,7 @@ export default class Product extends React.Component {
     render(){
         return( 
             <div className='product'>
-                {this.props.element.image}
+                {this.props.element.img}
                 {this.props.element.name}
                 {this.props.element.price}
 
