@@ -32,5 +32,14 @@ module.exports = {
             res.status(500).send({errorMessage: 'Negatory! Failure!'})
             console.log(err)
         })
+    }, 
+
+    updateProduct: (req, res) => {
+        const db = req.app.get('db')
+        const {id} = req.params
+        const {name, price, img} = req.body
+
+        db.update_product([id, name, price, img])
+        .then(data => res.status(200).send(data))
     }
 }

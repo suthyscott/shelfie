@@ -86,7 +86,22 @@ export default class Form extends React.Component {
         this.handleResetInputValues()
     }
 
+    handleUpdateProduct = (name, price, img, id) => {
+        console.log(name, price, img, id)
+        axios.put(`/api/update/${id}`, {name, price, img})
+        .then(res => {
+            let {name, price, img} = res.data
+            this.setState({
+                name: name,
+                price: price,
+                img: img
+            })
+            this.props.getProducts()
+        })
+    }
+
     render(){
+        let {name, price, img} = this.state
         return( 
             <div id='form'>
                 {this.state.editing ? (
@@ -96,7 +111,7 @@ export default class Form extends React.Component {
                         <section>Product Name<input value={this.state.name} onChange={(e) => this.handleName(e)}/></section>
                         <section>Price<input value={this.state.price} onChange={(e) => this.handlePrice(e)}/></section>
                         <button onClick={(e) => this.handleResetInputValues()}>Cancel</button>                            
-                        <button onClick={() => this.handleSaveChanges()}>Save Changes</button>
+                        <button onClick={() => this.handleSaveChanges(), () => this.handleUpdateProduct(name, price, img, this.props.currentProduct.id)}>Save Changes </button>
                     </article>
                 ) : (
                     <div>
