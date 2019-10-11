@@ -1,13 +1,14 @@
 import React from 'react';
 import './Form.css'
+import axios from 'axios';
 
 export default class Form extends React.Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
 
         this.state ={
             img: [],
-            productName: [],
+            name: [],
             price: 0
         }
     }
@@ -16,15 +17,15 @@ export default class Form extends React.Component {
         this.setState({
             img: e.target.value
         })
-        console.log(this.state.img)
+        // console.log(this.state.img)
     }
 
-    handleProductName = (e) => {
-        // console.log(this.state.productName)
+    handleName = (e) => {
+        // console.log(this.state.name)
         this.setState({
-            productName: e.target.value
+            name: e.target.value
         })
-        // console.log(this.state.productName)
+        // console.log(this.state.name)
     }
 
     handlePrice = (e) => {
@@ -38,12 +39,37 @@ export default class Form extends React.Component {
     handleResetInputValues = () => {
         this.setState({
             img: [],
-            productName: [],
-            price: 0
+            name: [],
+            price: 0,
+            currentProductId: null,
+            editing: false
         })
         // console.log(this.state)
 
+    }
 
+    handleAddProduct = () => {
+        const {name, price, img} = this.state
+        axios.post('/api/product', {name, price, img})
+        .then(res => {
+            res.sendStatus(200)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
+        this.props.getProducts()
+        this.handleResetInputValues()
+    }
+
+    componentDidUpdate = (oldProps, oldState) => {
+       if (oldProps.currentProduct.id != this.props.currentProduct.id) {
+            this.setState({
+                img: this.props.currentProduct.img,
+                name: this.props.currentProduct.name,
+                price: this.props.currentProduct.price
+            })
+       }
     }
 
     render(){
@@ -52,12 +78,12 @@ export default class Form extends React.Component {
                 <section id='form-image-container'>image</section>
 
                 <section>Image URL<input value={this.state.img} onChange={(e) => this.handleImageURL(e)}/></section>
-                <section>Product Name<input value={this.state.productName} onChange={(e) => this.handleProductName(e)}/></section>
+                <section>Product Name<input value={this.state.name} onChange={(e) => this.handleName(e)}/></section>
                 <section>Price<input value={this.state.price} onChange={(e) => this.handlePrice(e)}/></section>
             
 
                 <button onClick={(e) => this.handleResetInputValues()}>Cancel</button>
-                <button>Add to inventory</button>
+                <button onClick={(e) => this.handleAddProduct()}>Add to inventory</button>
             </div>
         )
     }

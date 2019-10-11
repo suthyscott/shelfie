@@ -15,4 +15,8 @@ massive(CONNECTION_STRING)
     })
     .catch(err => console.log(err))
 
-app.listen(4545, console.log(`Take us to warp 4545!`))
+app.get('/api/inventory', ctrl.getInventory)
+app.post('/api/product', ctrl.addProduct)
+app.delete('/api/delete/:id', ctrl.deleteProduct)
+
+app.listen(SERVER_PORT, console.log(`Take us to warp ${SERVER_PORT}!`))
