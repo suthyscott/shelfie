@@ -16,7 +16,6 @@ class App extends React.Component {
   }
 
   componentDidMount = () => {
-    console.log("hit")
     axios.get(`/api/inventory`).then(res => {
         this.setState({
           inventory: res.data
