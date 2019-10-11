@@ -1,0 +1,13 @@
+#form {
+    height: 400px;
+    width: 300px;
+    margin: 20px;
+    border: 1px solid black;
+}
+
+#form-image-container {
+    height: 150px;
+    width: 200px;
+    margin: 10px;
+    border: 1px solid black;
+}
