@@ -7,8 +7,8 @@ export default class Header extends React.Component {
             <div className='header'>
                 
                 <h1>SHELFIE</h1>
-                <button>Dashboard</button>
-                <button>Add Inventory</button>
+                <button className='header-button'>Dashboard</button>
+                <button className='header-button'>Add Inventory</button>
 
             </div>
         )

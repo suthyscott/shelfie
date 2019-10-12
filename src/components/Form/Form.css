@@ -3,11 +3,24 @@
     width: 300px;
     margin: 20px;
     border: 1px solid black;
+    background-color: #3AD886;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-#form-image-container {
+.inputs {
+    width: 90%;
+
+
+}
+
+img {
     height: 150px;
-    width: 200px;
-    margin: 10px;
-    border: 1px solid black;
+    width: 250px;
+}
+
+.form-button {
+    background-color: #ED6B59;
 }

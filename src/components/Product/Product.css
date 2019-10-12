@@ -1,11 +1,20 @@
 .product {
-    height: 100px;
-    width: 200px;
+    height: 200px;
+    width: 400px;
     margin: 10px;
-    background-color: rgb(177, 120, 230);
+    background-color: #D34735; 
+    display: flex;
+    justify-content: center;   
 }
 
 #img {
-    height: 40px;
-    width: 40px;
+    height: 150px;
+    width: 200px;
+    margin: 25px;
+}
+
+.product-buttons {
+    background-color: #3AD886;
+    height: 30px;
+    width: 50px;
 }

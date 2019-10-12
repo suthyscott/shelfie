@@ -7,7 +7,7 @@ export default class Form extends React.Component {
         super(props)
 
         this.state ={
-            img: [],
+            img: 'https://icon-library.net/images/no-image-icon/no-image-icon-0.jpg',
             name: [],
             price: 0
         }
@@ -106,27 +106,27 @@ export default class Form extends React.Component {
             <div id='form'>
                 {this.state.editing ? (
                     <article>
-                        <section id='form-image-container'>image</section>
-                        <section>Image URL<input value={this.state.img} onChange={(e) => this.handleImageURL(e)}/></section>
-                        <section>Product Name<input value={this.state.name} onChange={(e) => this.handleName(e)}/></section>
-                        <section>Price<input value={this.state.price} onChange={(e) => this.handlePrice(e)}/></section>
+                        <section className='form-image-container'><img src={this.state.img}/></section>
+                        <section className='inputs'>Image URL<br/><input value={this.state.img} onChange={(e) => this.handleImageURL(e)}/></section>
+                        <section className='inputs'>Product Name<br/><input value={this.state.name} onChange={(e) => this.handleName(e)}/></section>
+                        <section className='inputs'>Price<br/><input value={this.state.price} onChange={(e) => this.handlePrice(e)}/></section>
                         <button onClick={(e) => this.handleResetInputValues()}>Cancel</button>                            
                         <button onClick={() => this.handleSaveChanges(), () => this.handleUpdateProduct(name, price, img, this.props.currentProduct.id)}>Save Changes </button>
                     </article>
                 ) : (
                     <div>
 
-                        <section id='form-image-container'>image</section>
+                        <section className='form-image-container'><img src={this.state.img}/></section>
 
-                        <section>Image URL<input value={this.state.img} onChange={(e) => this.handleImageURL(e)}/></section>
+                        <section>Image URL<br/><input value={this.state.img} onChange={(e) => this.handleImageURL(e)}/></section>
 
-                        <section>Product Name<input value={this.state.name} onChange={(e) => this.handleName(e)}/></section>
+                        <section>Product Name<br/><input value={this.state.name} onChange={(e) => this.handleName(e)}/></section>
                         
-                        <section>Price<input value={this.state.price} onChange={(e) => this.handlePrice(e)}/></section>
+                        <section>Price<br/><input value={this.state.price} onChange={(e) => this.handlePrice(e)}/></section>
                     
 
-                        <button onClick={(e) => this.handleResetInputValues()}>Cancel</button>
-                        <button value={this.state.editInput} onClick={(e) => this.handleAddProduct()}>Add to inventory</button>
+                        <button className='form-button' onClick={(e) => this.handleResetInputValues()}>Cancel</button>
+                        <button className='form-button' value={this.state.editInput} onClick={(e) => this.handleAddProduct()}>Add to inventory</button>
 
                     </div>
                 )}
