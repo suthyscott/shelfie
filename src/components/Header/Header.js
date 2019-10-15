@@ -1,5 +1,6 @@
 import React from 'react';
-import './Header.css'
+import './Header.css';
+import {Link} from 'react-router-dom';
 
 export default class Header extends React.Component {
     render(){
@@ -7,8 +8,9 @@ export default class Header extends React.Component {
             <div className='header'>
                 
                 <h1>SHELFIE</h1>
-                <button className='header-button'>Dashboard</button>
-                <button className='header-button'>Add Inventory</button>
+
+                <Link to='/'><button className='header-button'>Dashboard</button></Link>
+                <Link to='/addinventory'><button className='header-button'>Add Inventory</button></Link>
 
             </div>
         )

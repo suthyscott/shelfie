@@ -20,4 +20,6 @@ app.post('/api/product', ctrl.addProduct)
 app.delete('/api/delete/:id', ctrl.deleteProduct)
 app.put('/api/update/:id', ctrl.updateProduct)
 
+app.get('/api/singleproduct/:id', ctrl.getProduct)
+
 app.listen(SERVER_PORT, console.log(`Take us to warp ${SERVER_PORT}!`))
